@@ -6,15 +6,17 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && \
 apt-get install gdal-bin postgresql-client -y
 
+RUN apt-get update && apt-get install nodejs npm -y
+
 RUN mkdir /code
 
 WORKDIR /code
 
-COPY ../mozart/requirements.txt /code/
+COPY ./mozart/requirements.txt /code/
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY ../mozart /code/
+COPY . /code
 
 EXPOSE 8000
