@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
-import {Routes} from 'react-router';
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -38,13 +37,9 @@ class App extends Component {
                             <Alerts/>
                             <div className="container">
                                 <Routes>
-                                    <Route exact path="/dashboard" element={
-                                        <PrivateRoute>
-                                            <Dashboard />
-                                        </PrivateRoute>
-                                    } />
-                                    <Route exact path="/register" element={<Register />}/>
-                                    <Route exact path="/login" element={<Login />}/>
+                                    <Route exact path="/dashboard" element={<PrivateRoute component={Dashboard}/>}/>
+                                    <Route exact path="/register" element={<Register/>}/>
+                                    <Route exact path="/login" element={<Login/>}/>
                                 </Routes>
                             </div>
                         </Fragment>
